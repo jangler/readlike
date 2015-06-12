@@ -39,21 +39,26 @@ def _transpose_chars(text, pos):
     # drag the character before pos forward over the character at pos, moving
     # pos forward as well. if point is at the end of the line, then this
     # transposes the two characters before point.
-    if len(text) < 2:
+    if len(text) < 2 or pos == 0:
         return text, pos
     if pos == len(text):
-        return text[:pos - 2] + [text[pos - 1], text[pos - 2]]
-    return text[:pos - 1] + [text[pos], text[pos - 1]] + text[pos + 1:]
+        return text[:pos - 2] + text[pos - 1] + text[pos - 2], pos
+    return text[:pos - 1] + text[pos] + text[pos - 1] + text[pos + 1:], pos + 1
 
 
 def _unix_line_discard(text, pos):
     # kill backward from pos to the beginning of the line.
-    return text[pos:], pos
+    return text[pos:], 0
 
 
 def _unix_word_rubout(text, pos):
     # kill the word behind pos, using white space as a word boundary.
-    raise NotImplementedError()
+    words = text[:pos].rsplit(None, 1)
+    if len(words) < 2:
+        return text[pos:], 0
+    else:
+        index = text.rfind(words[1], 0, pos)
+        return text[:index] + text[pos:], index
 
 
 _key_bindings = {
