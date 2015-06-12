@@ -71,6 +71,11 @@ def _downcase_word(text, pos):
     return text[:pos] + text[pos:new_pos].lower() + text[new_pos:], new_pos
 
 
+def _end_of_line(text, pos):
+    # Move pos to the end of text.
+    return text, len(text)
+
+
 def _forward_char(text, pos):
     # Move pos forward a character.
     return text, min(pos + 1, len(text))
@@ -146,39 +151,48 @@ def _upcase_word(text, pos):
 
 
 _key_bindings = {
-    'ctrl a': _beginning_of_line,
-    'ctrl b': _backward_char,
-    'ctrl d': _delete_char,
-    'ctrl f': _forward_char,
-    'ctrl h': _backward_delete_char,
-    'backspace': _backward_delete_char,
     # TODO: C-I/tab (complete) - 0.2.0
-    'ctrl k': _kill_line,
     # TODO: C-N (next-history) - 0.2.0
     # TODO: C-P (previous-history) - 0.2.0
-    'ctrl t': _transpose_chars,
-    'ctrl u': _unix_line_discard,
-    'ctrl w': _unix_word_rubout,
     # TODO: C-Y (yank) - 0.3.0
-    'ctrl meta h': _backward_kill_word,
-    'meta backspace': _backward_kill_word,
-    # TODO: M-C-I (tab-insert) - 0.2.0
-    # TODO: M-C-Y (yank-nth-arg) - 0.3.0
-    # TODO: M-C-[ (complete) - 0.2.0
     # TODO: M-* (insert-completions) - 0.2.0
     # TODO: M-. (yank-last-arg) - 0.3.0
     # TODO: M-< (beginning-of-history) - 0.2.0
     # TODO: M-> (end-of-history) - 0.2.0
+    # TODO: M-C-I (tab-insert) - 0.2.0
+    # TODO: M-C-Y (yank-nth-arg) - 0.3.0
+    # TODO: M-C-[ (complete) - 0.2.0
+    # TODO: M-Y (yank-pop) - 0.3.0
+    # TODO: M-_ (yank-last-arg) - 0.3.0
+    'backspace': _backward_delete_char,
+    'ctrl a': _beginning_of_line,
+    'ctrl b': _backward_char,
+    'ctrl d': _delete_char,
+    'ctrl e': _end_of_line,
+    'ctrl f': _forward_char,
+    'ctrl h': _backward_delete_char,
+    'ctrl k': _kill_line,
+    'ctrl meta h': _backward_kill_word,
+    'ctrl t': _transpose_chars,
+    'ctrl u': _unix_line_discard,
+    'ctrl w': _unix_word_rubout,
+    'delete': _delete_char,
+    'end': _end_of_line,
+    'home': _beginning_of_line,
+    'left': _backward_char,
+    'meta \\': _delete_horizontal_space,
     'meta b': _backward_word,
+    'meta backspace': _backward_kill_word,
     'meta c': _capitalize_word,
     'meta d': _kill_word,
+    'meta delete': _kill_word,
     'meta f': _forward_word,
     'meta l': _downcase_word,
+    'meta left': _backward_word,
+    'meta right': _forward_word,
     'meta t': _transpose_words,
     'meta u': _upcase_word,
-    # TODO: M-Y (yank-pop) - 0.3.0
-    'meta \\': _delete_horizontal_space,
-    # TODO: M-_ (yank-last-arg) - 0.3.0
+    'right': _forward_char,
 }
 
 _keys = frozenset(_key_bindings.keys())

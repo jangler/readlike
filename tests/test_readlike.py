@@ -65,6 +65,11 @@ class TestReadlike(unittest.TestCase):
         self.assertEqual(rl._downcase_word('. TEST', 0), ('. test', 6))
         self.assertEqual(rl._downcase_word('TEST  ', 1), ('Test  ', 4))
 
+    def test_end_of_line(self):
+        self.assertEqual(rl._end_of_line('', 0), ('', 0))
+        self.assertEqual(rl._end_of_line('test', 0), ('test', 4))
+        self.assertEqual(rl._end_of_line('test', 4), ('test', 4))
+
     def test_forward_char(self):
         self.assertEqual(rl._forward_char('', 0), ('', 0))
         self.assertEqual(rl._forward_char('test', 0), ('test', 1))
