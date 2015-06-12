@@ -57,6 +57,15 @@ class TestReadlike(unittest.TestCase):
         self.assertEqual(rl._unix_word_rubout('hi  yo  ', 5), ('hi  o  ', 4))
         self.assertEqual(rl._unix_word_rubout('hi  yo  ', 8), ('hi  ', 4))
 
+    def test_edit(self):
+        self.assertEqual(rl.edit('test', 4, 's'), ('tests', 5))
+        self.assertEqual(rl.edit('test', 4, 'ctrl h'), ('tes', 3))
+        self.assertEqual(rl.edit('test', 4, 'bogus'), ('test', 4))
+
+    def test_keys(self):
+        self.assertEqual(type(rl.keys()), type(frozenset()))
+        self.assertNotEqual(len(rl.keys()), 0)
+
 
 if __name__ == '__main__':
     unittest.main()
