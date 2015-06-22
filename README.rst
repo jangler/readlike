@@ -28,7 +28,13 @@ Transpose words::
 	>>> readlike.edit('perilous siege', 9, 'meta t')
 	('siege perilous', 14)
 
+Projects using Readlike
+-----------------------
+
+- hangups_
+
 .. _GNU Readline: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
 .. _readline: https://docs.python.org/3/library/readline.html
 .. _PyPI: https://pypi.python.org/pypi/readlike
 .. _Urwid: http://urwid.org/
+.. _hangups: https://github.com/tdryer/hangups
