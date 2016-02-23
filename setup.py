@@ -9,7 +9,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='readlike',
-    version='0.1.1',
+    version='0.1.2',
     description='GNU Readline-like line editing module',
     long_description=long_description,
     url='http://jangler.info/code/readlike',
