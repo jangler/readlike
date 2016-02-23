@@ -7,7 +7,7 @@ package in the standard library--but this package allows access to those
 capabilties in settings outside of a standard CLI.
 
 Currently, all stateless Readline commands are implemented. This means that
-yanking and history aren't supported yet (but they are on the to-do list).
+yanking and history are not supported.
 
 This module is especially well-suited to interfacing with Urwid_ due to a
 shared syntax for describing key inputs.
