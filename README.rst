@@ -40,7 +40,7 @@ Implemented commands and their correspondings keys are as follows::
     beginning-of-line        ctrl a, home
     capitalize-word          meta c
     delete-char              ctrl d, delete
-    delete-horizontal-space  meta \\
+    delete-horizontal-space  meta \
     downcase-word            meta l
     end-of-line              ctrl e, end
     forward-char             ctrl f, right
