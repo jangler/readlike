@@ -9,15 +9,15 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='readlike',
-    version='0.1.2',
+    version='0.1.3',
     description='GNU Readline-like line editing module',
     long_description=long_description,
-    url='http://jangler.info/code/readlike',
+    url='https://github.com/jangler/readlike',
     author='Brandon Mulcahy',
-    author_email='brandon@jangler.info',
+    author_email='brandon@lightcones.net',
     license='MIT',
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
